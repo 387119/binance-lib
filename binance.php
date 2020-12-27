@@ -59,6 +59,8 @@ class Binance {
 		#curl_setopt($ch,CURLOPT_VERBOSE,true);
 		#$verb=fopen ('debug.log',"w+");
 		#curl_setopt($ch,CURLOPT_STDERR,$verb);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 		$output= curl_exec($ch);
 		if (!$output){
 			trigger_error(curl_error($ch));
