@@ -320,6 +320,17 @@ class Binance {
 		}
 		return false;
 	}
+	function getBalances(){
+		$this->_api_v3_account();
+		$res=array();
+		foreach ($this->res["balances"] as $b1){
+			$res[]=array(
+				"symbol"=>$b1['asset'],
+				"free"=>$b1['free']
+			);
+		}
+		return $res;
+	}
 	function getBalanceFree($symbol){
 		$this->_api_v3_account();
 		foreach ($this->res["balances"] as $b1){
